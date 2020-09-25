@@ -77,6 +77,13 @@ endif()
 
 message("")
 
+if( ELUNA )
+  ShowOption("Build w/ Eluna         :" "Yes")
+  add_definitions(-DELUNA)
+else()
+  ShowOption("Build w/ Eluna         :" "No (default)")
+endif()
+
 if( USE_COREPCH )
   ShowOption("Build core w/PCH       :" "Yes (default)")
 else()
@@ -101,6 +108,12 @@ if( WITH_COREDEBUG )
   add_definitions(-DOREGON_DEBUG)
 else()
   ShowOption("Use coreside debug     :" "No  (default)")
+endif()
+
+if( NOT WITH_SOURCE_TREE STREQUAL "no" )
+  message("* Show source tree       : Yes - \"${WITH_SOURCE_TREE}\"")
+else()
+  message("* Show source tree       : No")
 endif()
 
 if( WITH_DOCS )
